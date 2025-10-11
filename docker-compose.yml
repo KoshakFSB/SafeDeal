@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  safe-deal-bot:
+    build: .
+    container_name: safe-deal-bot
+    restart: unless-stopped
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    env_file:
+      - .env
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
